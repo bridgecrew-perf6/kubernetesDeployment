@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-basic-app
+  labels:
+    app: springboot-basic-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-basic-app
+  template:
+    metadata:
+      labels:
+        app: springboot-basic-app
+    spec:
+      containers:
+      - name: springboot-basic-app
+        image: docker-spring
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9091
+
+
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name:  springboot-basic-app-service
+spec:
+  selector:
+    app:  springboot-basic-app
+  type:  LoadBalancer
+  ports:
+  - name:  port-80-9091
+    port:  80
+    targetPort:  9091
