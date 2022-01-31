@@ -20,3 +20,5 @@ In different shell use minikube image load <docker image name> to use locally bu
 create kube deployment manifest file
 
 use kubectl apply -f <filename>  to deploy to kubernetes
+ 
+you can use kubeforwarder(https://github.com/pixel-point/kube-forwarder) to forward the load blancer port to local port for easy. access in local.
